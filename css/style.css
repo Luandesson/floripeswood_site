@@ -1,0 +1,366 @@
+/* ======================================= */
+/* 0. PALETA DE CORES E FONTES             */
+/* ======================================= */
+
+/* Paleta de Cores do Projeto: 
+   Dourado/Cobre: #C6A664 (Principal / Dourado)
+   Dourado Claro: #D4B670
+   Dourado Escuro: #A38453
+   Preto: #000000
+   Branco: #FFFFFF 
+*/
+
+/* Fontes: Poppins (Títulos), Open Sans (Corpo do Texto) */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.7;
+    background-color: #FFFFFF;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+/* Classes de Background */
+.bg-light-wood {
+    background-color: #f7f7f7; 
+}
+.bg-dark-wood {
+    background-color: #3d3d3d; 
+}
+
+/* ======================================= */
+/* 1. HEADER E NAVEGAÇÃO (COM IMAGEM DE FUNDO) */
+/* ======================================= */
+
+#main-nav {
+    /* Usa a imagem de fundo de madeira escura e aplica um overlay preto semi-transparente */
+    background: url('../img/Cores-de-madeira-1024x702.jpg.webp') center center; 
+    background-size: cover;
+    background-color: rgba(148, 148, 148, 0); /* Fundo preto com 70% de opacidade */
+    background-blend-mode: overlay; /* Mistura o preto com a imagem de fundo */
+    
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(198, 166, 100, 0.3); /* Linha dourada sutil */
+}
+
+#main-nav .nav-link {
+    color: #FFFFFF;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+#main-nav .nav-link:hover {
+    color: #C6A664; /* Cor dourada no hover */
+}
+
+/* Estilo para o botão de 'Free Quote' na navegação (que usa .btn-cta) */
+.navbar-nav .btn-cta.nav-link {
+    color: #000000 !important;
+}
+
+/* Estilo Adicional para o Header (Ativado por main.js ao rolar) */
+#main-nav.scrolled {
+    background-color: #00000060; /* Fundo preto sólido */
+   /* background-image: none; /* Remove a imagem para um visual mais limpo ao rolar */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+}
+
+/* Opcional: Efeito para deixar a logo menor quando rolar */
+#main-nav.scrolled .navbar-brand img {
+    height: 50px; /* Reduz a altura de 40px para 35px */
+    transition: height 0.20s ease;
+}
+
+
+/* ======================================= */
+/* 2. HERO SECTION                         */
+/* ======================================= */
+
+.hero-section {
+    background: url('../img/hero-bg.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    padding-top: 56px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero-section .text-overlay {
+    position: relative;
+    z-index: 2;
+    color: #FFFFFF;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+}
+
+/* ======================================= */
+/* 3. ESTILO DOS BOTÕES PREMIUM (COM IMAGEM) */
+/* ======================================= */
+
+/* Botão Principal: GET A FREE QUOTE e SUBMIT REQUEST */
+.btn-cta, .btn-submit {
+    /* 1. Usa a imagem de fundo de madeira ripada */
+    background-image: url('../img/wood-texture-ripado.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    
+    border: 2px solid #C6A664; /* Borda dourada */
+    color: #000000 !important; 
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 12px 30px;
+    border-radius: 40px; 
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    display: inline-block;
+    
+    /* Efeito para simular o brilho dourado sobre a madeira */
+    filter: brightness(1); 
+}
+
+/* Efeito Hover: Aumenta o brilho e levanta o botão */
+.btn-cta:hover, .btn-submit:hover {
+    background-color: transparent; 
+    border-color: #A38453; /* Borda um pouco mais escura */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+    
+    /* Aumenta o brilho da imagem de fundo para dar o efeito "dourado/polido" */
+    filter: brightness(1.15); 
+}
+
+/* Botão Secundário: VIEW OUR WORK */
+.btn-secondary {
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF !important;
+    background-color: transparent;
+    padding: 12px 30px;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-secondary:hover {
+    background-color: #C6A664;
+    color: #000000 !important;
+    border-color: #C6A664;
+}
+
+/* Botões de Contato (Phone e Social) */
+.btn-phone {
+    background-color: #000000;
+    color: #FFFFFF !important;
+    border-radius: 40px;
+    padding: 12px 25px;
+    text-decoration: none;
+}
+.btn-phone:hover {
+    background-color: #333333;
+}
+.btn-social {
+    background-color: #3d3d3d;
+    color: #FFFFFF !important;
+    border-radius: 40px;
+    padding: 12px 25px;
+    text-decoration: none;
+    margin-left: 5px;
+}
+.btn-social:hover {
+    background-color: #555555;
+}
+
+
+/* ======================================= */
+/* 4. GALLERY (CARROSSEL) E VÍDEO          */
+/* ======================================= */
+
+/* Define uma altura consistente para as imagens no carrossel */
+#project-carousel img {
+    height: 450px;
+    object-fit: cover; 
+    border-radius: 10px; 
+}
+
+/* Container responsivo para VÍDEO (iframe) */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Ajusta a cor e tamanho dos controles do carrossel */
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-radius: 50%;
+    padding: 15px;
+    width: 40px;
+    height: 40px;
+}
+
+.carousel-indicators button {
+    background-color: #C6A664 !important; 
+}
+
+
+/* ======================================= */
+/* 5. SEÇÕES DE CONTEÚDO (ABOUT/SERVICES/SUSTAINABILITY)  */
+/* ======================================= */
+
+/* NOVO: Estilo para o Título (Título + Linha Dourada) */
+.section-title {
+    text-align: center;
+}
+
+.section-title h2 {
+    position: relative;
+    padding-bottom: 15px; /* Espaço para a linha */
+    margin-bottom: 30px; 
+}
+
+/* Cria a linha dourada decorativa */
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 3px;
+    width: 80px; /* Largura da linha */
+    background-color: #C6A664; /* Cor Dourada/Cobre */
+    border-radius: 2px;
+}
+
+
+.feature-box {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.feature-box:hover {
+    border-color: #C6A664;
+    box-shadow: 0 5px 15px rgba(198, 166, 100, 0.3);
+}
+
+/* CORRIGIDO: Adiciona a cor dourada ao ícone */
+.feature-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 15px;
+    color: #C6A664; /* Aplica o dourado ao ícone */
+}
+
+.service-card {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.service-card h3 {
+    color: #C6A664;
+    font-size: 1.5rem;
+    margin-top: 15px;
+    padding: 0 20px;
+}
+.service-card p {
+    padding: 0 20px 20px;
+    margin: 0;
+}
+
+.service-card img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+/* ======================================= */
+/* 6. QUOTE SECTION (FORMULÁRIO)           */
+/* ======================================= */
+
+#quote .form-control, #quote .form-select {
+    background-color: #555555;
+    border-color: #C6A664;
+    color: #FFFFFF;
+}
+
+#quote .form-control::placeholder {
+    color: #ddd;
+}
+
+/* Destaca o label */
+#quote .form-label {
+    color: #D4B670;
+    font-weight: 600;
+}
+
+
+/* ======================================= */
+/* 7. MEDIA QUERIES (RESPONSIVIDADE)       */
+/* ======================================= */
+
+@media (max-width: 992px) {
+    .hero-section {
+        height: 75vh;
+    }
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    /* Reduz a altura do carrossel no mobile */
+    #project-carousel img {
+        height: 350px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    #project-carousel img {
+        height: 250px;
+    }
+}
+/* A chave extra no final foi removida. O arquivo agora encerra aqui. */
