@@ -1,5 +1,5 @@
 /* ======================================= */
-/* 0. PALETA DE CORES E FONTES             */
+/* 0. PALETA DE CORES E FONTES             */
 /* ======================================= */
 
 /* Paleta de Cores do Projeto: 
@@ -8,6 +8,9 @@
    Dourado Escuro: #A38453
    Preto: #000000
    Branco: #FFFFFF 
+   NOVO GRADIENTE DOURADO (Para CTA):
+   Ouro Claro: #E2C78A
+   Ouro Escuro: #B4966B
 */
 
 /* Fontes: Poppins (Títulos), Open Sans (Corpo do Texto) */
@@ -29,7 +32,7 @@ h1, h2, h3, h4 {
     background-color: #f7f7f7; 
 }
 .bg-dark-wood {
-    background-color: #3d3d3d; 
+    background-color: #3d3d3d; /* Madeira escura / Chumbo */
 }
 
 /* ======================================= */
@@ -37,13 +40,14 @@ h1, h2, h3, h4 {
 /* ======================================= */
 
 #main-nav {
-    /* Usa a imagem de fundo de madeira escura e aplica um overlay preto semi-transparente */
-    background: url('../img/Cores-de-madeira-1024x702.jpg.webp') center center; 
+    /* CORRIGIDO: Simplifica a regra de background e ajusta a opacidade */
+    background-image: url('../img/dark-wood-header.jpg'); 
     background-size: cover;
-    background-color: rgba(148, 148, 148, 0); /* Fundo preto com 70% de opacidade */
+    background-position: center;
+    background-color: rgba(16, 13, 13, 0.453); /* Fundo preto com 70% de opacidade */
     background-blend-mode: overlay; /* Mistura o preto com a imagem de fundo */
     
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
     transition: all 0.3s ease;
     border-bottom: 1px solid rgba(198, 166, 100, 0.3); /* Linha dourada sutil */
 }
@@ -60,36 +64,62 @@ h1, h2, h3, h4 {
 
 /* Estilo para o botão de 'Free Quote' na navegação (que usa .btn-cta) */
 .navbar-nav .btn-cta.nav-link {
+    /* As cores serão definidas pelo estilo .btn-cta abaixo */
     color: #000000 !important;
 }
 
 /* Estilo Adicional para o Header (Ativado por main.js ao rolar) */
 #main-nav.scrolled {
-    background-color: #00000060; /* Fundo preto sólido */
-   /* background-image: none; /* Remove a imagem para um visual mais limpo ao rolar */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+    background-color: #f0f0f037; /* Fundo preto sólido para velocidade */
+    background-image: none; /* Remove a imagem para um visual mais limpo e rápido ao rolar */
+    background-blend-mode: normal;
+    box-shadow: 0 4px 10px rgba(206, 9, 9, 0.019); 
 }
 
 /* Opcional: Efeito para deixar a logo menor quando rolar */
 #main-nav.scrolled .navbar-brand img {
-    height: 50px; /* Reduz a altura de 40px para 35px */
+    height: 50px; 
     transition: height 0.20s ease;
 }
 
 
 /* ======================================= */
-/* 2. HERO SECTION                         */
+/* 2. HERO SECTION - COM VÍDEO DE FUNDO    */
 /* ======================================= */
 
 .hero-section {
-    background: url('../img/hero-bg.jpg') no-repeat center center;
-    background-size: cover;
-    height: 100vh;
     position: relative;
+    height: 100vh;
     padding-top: 56px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    /* Fundo preto sólido para fallback caso o vídeo falhe */
+    background-color: #000000;
 }
 
+/* Garante que o vídeo preencha o container */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0; /* Fica atrás do texto e do overlay */
+}
+
+.video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Garante que o vídeo cubra toda a área e mantenha a proporção */
+}
+
+
+/* Overlay mais escuro para garantir a legibilidade do texto H1 (sobre o vídeo) */
 .hero-section::before {
     content: '';
     position: absolute;
@@ -97,10 +127,11 @@ h1, h2, h3, h4 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.55); /* Aumenta a opacidade para 55% para melhor contraste */
     z-index: 1;
 }
 
+/* Garante que o texto fique por cima do overlay */
 .hero-section .text-overlay {
     position: relative;
     z-index: 2;
@@ -111,43 +142,40 @@ h1, h2, h3, h4 {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 1); /* Sombra mais forte para legibilidade */
 }
 
 /* ======================================= */
-/* 3. ESTILO DOS BOTÕES PREMIUM (COM IMAGEM) */
+/* 3. ESTILO DOS BOTÕES PREMIUM (COM GRADIENTE) */
 /* ======================================= */
 
 /* Botão Principal: GET A FREE QUOTE e SUBMIT REQUEST */
 .btn-cta, .btn-submit {
-    /* 1. Usa a imagem de fundo de madeira ripada */
-    background-image: url('../img/wood-texture-ripado.jpg'); 
+    /* 1. Gradiente Dourado (Cria o efeito metálico/polido) */
+    background-image: linear-gradient(to top, #B4966B 0%, #E2C78A 50%, #B4966B 100%), url('../img/wood-texture-ripado.jpg');
     background-size: cover; 
     background-position: center; 
+    background-blend-mode: overlay; /* Mistura o gradiente com a textura */
     
-    border: 2px solid #C6A664; /* Borda dourada */
+    border: 2px solid #C6A664; 
     color: #000000 !important; 
     font-weight: 700;
     text-transform: uppercase;
-    padding: 12px 30px;
+    padding: 14px 35px; /* Levemente maior para destaque */
     border-radius: 40px; 
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transição mais suave (vivo) */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Sombra mais intensa */
     text-decoration: none;
     display: inline-block;
-    
-    /* Efeito para simular o brilho dourado sobre a madeira */
     filter: brightness(1); 
 }
 
-/* Efeito Hover: Aumenta o brilho e levanta o botão */
+/* Efeito Hover: Aumenta o brilho, levanta o botão e muda a cor da borda */
 .btn-cta:hover, .btn-submit:hover {
-    background-color: transparent; 
-    border-color: #A38453; /* Borda um pouco mais escura */
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
-    
-    /* Aumenta o brilho da imagem de fundo para dar o efeito "dourado/polido" */
-    filter: brightness(1.15); 
+    border-color: #A38453; 
+    transform: translateY(-4px) scale(1.02); /* Levanta mais e aumenta levemente */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+    filter: brightness(1.2); /* Aumenta o brilho do gradiente */
 }
 
 /* Botão Secundário: VIEW OUR WORK */
@@ -155,7 +183,7 @@ h1, h2, h3, h4 {
     border: 2px solid #FFFFFF;
     color: #FFFFFF !important;
     background-color: transparent;
-    padding: 12px 30px;
+    padding: 14px 35px;
     border-radius: 40px;
     transition: all 0.3s ease;
     text-decoration: none;
@@ -166,29 +194,37 @@ h1, h2, h3, h4 {
     background-color: #C6A664;
     color: #000000 !important;
     border-color: #C6A664;
+    transform: translateY(-2px);
 }
 
-/* Botões de Contato (Phone e Social) */
+/* Botões de Contato (Phone e Social) - Com Gradiente */
 .btn-phone {
-    background-color: #000000;
+    background-image: linear-gradient(to right, #000000, #333333); /* Gradiente de preto sutil */
     color: #FFFFFF !important;
     border-radius: 40px;
     padding: 12px 25px;
     text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid #C6A664;
 }
 .btn-phone:hover {
-    background-color: #333333;
+    background-image: linear-gradient(to right, #333333, #000000);
+    box-shadow: 0 4px 10px rgba(198, 166, 100, 0.3);
 }
+
 .btn-social {
-    background-color: #3d3d3d;
+    background-image: linear-gradient(to right, #3d3d3d, #555555);
     color: #FFFFFF !important;
     border-radius: 40px;
     padding: 12px 25px;
     text-decoration: none;
     margin-left: 5px;
+    transition: all 0.3s ease;
+    border: 1px solid #3d3d3d;
 }
 .btn-social:hover {
-    background-color: #555555;
+    background-image: linear-gradient(to right, #555555, #3d3d3d);
+    border: 1px solid #C6A664;
 }
 
 
@@ -224,11 +260,15 @@ h1, h2, h3, h4 {
 
 /* Ajusta a cor e tamanho dos controles do carrossel */
 .carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.7); 
     border-radius: 50%;
     padding: 15px;
     width: 40px;
     height: 40px;
+    transition: all 0.3s ease;
+}
+.carousel-control-prev-icon:hover, .carousel-control-next-icon:hover {
+    background-color: #C6A664; 
 }
 
 .carousel-indicators button {
@@ -240,7 +280,7 @@ h1, h2, h3, h4 {
 /* 5. SEÇÕES DE CONTEÚDO (ABOUT/SERVICES/SUSTAINABILITY)  */
 /* ======================================= */
 
-/* NOVO: Estilo para o Título (Título + Linha Dourada) */
+/* Estilo para o Título (Título + Linha Dourada) */
 .section-title {
     text-align: center;
 }
@@ -258,16 +298,16 @@ h1, h2, h3, h4 {
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    height: 3px;
-    width: 80px; /* Largura da linha */
-    background-color: #C6A664; /* Cor Dourada/Cobre */
+    height: 4px; /* Linha um pouco mais grossa */
+    width: 100px; /* Linha um pouco maior */
+    background: linear-gradient(to right, #A38453, #C6A664, #A38453); /* Gradiente na linha */
     border-radius: 2px;
 }
 
 
 .feature-box {
     text-align: center;
-    padding: 20px;
+    padding: 30px 20px; /* Mais padding para maior harmonia */
     border: 1px solid #eee;
     border-radius: 8px;
     transition: all 0.3s ease;
@@ -275,34 +315,35 @@ h1, h2, h3, h4 {
 
 .feature-box:hover {
     border-color: #C6A664;
-    box-shadow: 0 5px 15px rgba(198, 166, 100, 0.3);
+    box-shadow: 0 8px 20px rgba(198, 166, 100, 0.4); /* Sombra mais destacada */
+    transform: translateY(-5px);
 }
 
-/* CORRIGIDO: Adiciona a cor dourada ao ícone */
+/* Adiciona a cor dourada ao ícone */
 .feature-icon {
-    font-size: 2.5rem;
+    font-size: 3rem; /* Ícone levemente maior */
     display: block;
     margin-bottom: 15px;
-    color: #C6A664; /* Aplica o dourado ao ícone */
+    color: #C6A664; 
 }
 
 .service-card {
     background-color: #FFFFFF;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra um pouco mais forte */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px); /* Levanta mais no hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); 
 }
 
 .service-card h3 {
     color: #C6A664;
-    font-size: 1.5rem;
-    margin-top: 15px;
+    font-size: 1.6rem; 
+    margin-top: 20px;
     padding: 0 20px;
 }
 .service-card p {
@@ -323,8 +364,15 @@ h1, h2, h3, h4 {
 
 #quote .form-control, #quote .form-select {
     background-color: #555555;
-    border-color: #C6A664;
+    border: 1px solid #C6A664; /* Borda dourada no input */
     color: #FFFFFF;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+#quote .form-control:focus, #quote .form-select:focus {
+    background-color: #555555;
+    color: #FFFFFF;
+    border-color: #E2C78A; /* Borda mais clara no focus */
+    box-shadow: 0 0 0 0.25rem rgba(198, 166, 100, 0.5);
 }
 
 #quote .form-control::placeholder {
@@ -344,7 +392,7 @@ h1, h2, h3, h4 {
 
 @media (max-width: 992px) {
     .hero-section {
-        height: 75vh;
+        height: 85vh; /* Levemente menor no tablet */
     }
     .hero-section h1 {
         font-size: 2.5rem;
@@ -359,8 +407,14 @@ h1, h2, h3, h4 {
     .hero-section h1 {
         font-size: 2rem;
     }
+    .btn-cta, .btn-secondary {
+        width: 100%;
+        margin-bottom: 10px;
+    }
     #project-carousel img {
         height: 250px;
     }
+    .feature-box {
+        padding: 20px 10px;
+    }
 }
-/* A chave extra no final foi removida. O arquivo agora encerra aqui. */
