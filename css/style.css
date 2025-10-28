@@ -359,30 +359,55 @@ h1, h2, h3, h4 {
 
 
 /* ======================================= */
-/* 6. QUOTE SECTION (FORMULÁRIO)           */
+/* 6. QUOTE SECTION (COM VÍDEO DE FUNDO DA LOGO) */
 /* ======================================= */
 
-#quote .form-control, #quote .form-select {
-    background-color: #555555;
-    border: 1px solid #C6A664; /* Borda dourada no input */
-    color: #FFFFFF;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-#quote .form-control:focus, #quote .form-select:focus {
-    background-color: #555555;
-    color: #FFFFFF;
-    border-color: #E2C78A; /* Borda mais clara no focus */
-    box-shadow: 0 0 0 0.25rem rgba(198, 166, 100, 0.5);
+#quote {
+    position: relative; 
+    overflow: hidden;
+    /* Remova a cor de fundo sólida aqui se você estiver definindo no HTML ou mantenha como fallback */
 }
 
-#quote .form-control::placeholder {
-    color: #ddd;
+/* O container do vídeo */
+.video-background-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; 
+    overflow: hidden;
 }
 
-/* Destaca o label */
-#quote .form-label {
-    color: #D4B670;
-    font-weight: 600;
+.video-background-logo video {
+    /* Garante que o vídeo preencha 100% da área */
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+/* Overlay escuro para garantir que o texto do formulário seja legível sobre o vídeo */
+#quote::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(217, 215, 215, 0.052); /* Aumenta a escuridão */
+    z-index: 1;
+}
+
+/* Garante que o conteúdo (texto, formulário) fique por cima do overlay e do vídeo */
+#quote .container {
+    position: relative;
+    z-index: 2;
 }
 
 
@@ -417,4 +442,35 @@ h1, h2, h3, h4 {
     .feature-box {
         padding: 20px 10px;
     }
+}
+/* ======================================= */
+/* 7. FOOTER SECTION (BACKGROUND DO HEADER) */
+/* ======================================= */
+
+.footer-header-bg {
+    /* Use o nome do arquivo de imagem do seu cabeçalho aqui! */
+    background: url('../img/dark-wood-header.jpg') no-repeat center center; 
+    background-size: cover;
+    position: relative;
+    /* Define uma altura mínima para o rodapé se ele ficar muito pequeno */
+    min-height: 150px; 
+}
+
+/* Opcional, mas recomendado: Adicionar um overlay para escurecer a textura e garantir que o texto branco seja legível */
+.footer-header-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Fundo escuro semi-transparente para o contraste (80% de opacidade) */
+    background: rgba(53, 52, 52, 0.338); 
+    z-index: 1;
+}
+
+/* Garante que o conteúdo (texto e logo) fique por cima do overlay */
+.footer-header-bg .container {
+    position: relative; 
+    z-index: 2;
 }
